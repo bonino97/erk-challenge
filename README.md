@@ -28,7 +28,7 @@ This project makes use of the following libraries:
 
 ## Live Demo
 
-Check out the live demo [here](https://erk-challenge.netlify.app/).
+Check out the live demo [here](https://erk-challenge.netlify.app/), deployed at Netlify :)
 
 ## Documentation
 

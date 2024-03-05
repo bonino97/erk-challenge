@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Checkbox from '@/components/Shared/Checkbox/Checkbox';
 import RangeSlider from '@/components/Shared/RangeSlider/RangeSlider';
 import { useProducts } from '@/providers/ProductsContext';
@@ -10,16 +10,19 @@ const SidebarContent: React.FC = () => {
     toggleProductType,
     setFilterCriteria,
   } = useProducts();
-  const [sliderValue, setSliderValue] = useState<{ x: number }>({
-    x: priceRangeLimits.min,
+  const [sliderValue, setSliderValue] = useState<number>(priceRangeLimits.min);
+  const [priceRange, setPriceRange] = useState({
+    min: priceRangeLimits.min,
+    max: priceRangeLimits.max,
   });
 
   const handleSliderChange = useCallback(
     ({ x }: { x: number }) => {
-      setSliderValue({ x });
-      setFilterCriteria({ priceRange: { min: x, max: x } }); // Ajusta según necesidad
+      setSliderValue(x);
+      setPriceRange((prevRange) => ({ ...prevRange, max: x }));
+      setFilterCriteria({ priceRange: { min: priceRange.min, max: x } });
     },
-    [setFilterCriteria]
+    [setFilterCriteria, priceRange.min]
   );
 
   const handleCheckboxChange = useCallback(
@@ -28,6 +31,13 @@ const SidebarContent: React.FC = () => {
     },
     [toggleProductType]
   );
+
+  useEffect(() => {
+    setPriceRange({ min: priceRangeLimits.min, max: priceRangeLimits.max });
+    setFilterCriteria({
+      priceRange: { min: priceRangeLimits.min, max: priceRangeLimits.max },
+    });
+  }, [priceRangeLimits, setFilterCriteria]);
 
   return (
     <div className='overflow-y-auto py-4 px-4 bg-white shadow-lg rounded-lg h-full'>
@@ -57,7 +67,7 @@ const SidebarContent: React.FC = () => {
           </h3>
           <div className='flex gap-2'>
             <RangeSlider
-              x={sliderValue.x}
+              x={sliderValue}
               xmin={priceRangeLimits.min}
               xmax={priceRangeLimits.max}
               onChange={handleSliderChange}
