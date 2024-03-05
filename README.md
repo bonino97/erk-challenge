@@ -35,6 +35,16 @@ Check out the live demo [here](https://erk-challenge.netlify.app/), deployed at 
 - For React Query documentation, visit [TanStack Query](https://tanstack.com/query/v3/docs/react/overview).
 - For Tailwind CSS documentation, visit [Tailwind CSS](https://tailwindcss.com/).
 
+
+## Features Developed
+
+[x] - List products showing Image, Title and Product Type. Required.
+[x] - Display amount of results retrieved. Required.
+[x] - Select products view between grid and list for the main display area. Required.
+[x] - Filter products by Product Type. Required.
+[x] - Filter products by Price Range. Optional.
+[x] - Sort results: A-Z, Price: High to Low, Price: Low to High. Optional.
+
 ## ToDo
 
 - Implement loading states across the application.
