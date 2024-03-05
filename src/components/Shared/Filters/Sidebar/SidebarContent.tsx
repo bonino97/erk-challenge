@@ -4,20 +4,24 @@ import RangeSlider from '@/components/Shared/RangeSlider/RangeSlider';
 import { useProducts } from '@/providers/ProductsContext';
 
 const SidebarContent: React.FC = () => {
-  const { productTypes, toggleProductType, setFilterCriteria } = useProducts();
-  const [sliderValue, setSliderValue] = useState(10);
-  const [state, setState] = useState<{ x: number }>({ x: 10 });
+  const {
+    productTypes,
+    priceRangeLimits,
+    toggleProductType,
+    setFilterCriteria,
+  } = useProducts();
+  const [sliderValue, setSliderValue] = useState<{ x: number }>({
+    x: priceRangeLimits.min,
+  });
 
   const handleSliderChange = useCallback(
     ({ x }: { x: number }) => {
-      setSliderValue(x);
-      // Simulando un rango. Puedes ajustar esto según la lógica de tu aplicación.
-      const minPrice = Math.max(x - 10, 0);
-      const maxPrice = x + 10;
-      setFilterCriteria({ priceRange: { min: minPrice, max: maxPrice } });
+      setSliderValue({ x });
+      setFilterCriteria({ priceRange: { min: x, max: x } }); // Ajusta según necesidad
     },
     [setFilterCriteria]
   );
+
   const handleCheckboxChange = useCallback(
     (type: string) => {
       toggleProductType(type);
@@ -52,7 +56,12 @@ const SidebarContent: React.FC = () => {
             Price Range
           </h3>
           <div className='flex gap-2'>
-            <RangeSlider x={state.x} onChange={handleSliderChange} />
+            <RangeSlider
+              x={sliderValue.x}
+              xmin={priceRangeLimits.min}
+              xmax={priceRangeLimits.max}
+              onChange={handleSliderChange}
+            />
           </div>
         </li>
       </ul>

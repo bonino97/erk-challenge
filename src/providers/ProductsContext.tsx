@@ -11,6 +11,7 @@ interface FilterCriteria {
 interface ProductsContextData {
   products: IProduct[];
   productTypes: string[];
+  priceRangeLimits: { min: number; max: number };
   isLoading: boolean;
   error: unknown;
   setFilterCriteria: (criteria: FilterCriteria) => void;
@@ -39,13 +40,26 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
   const [filteredProducts, setFilteredProducts] = useState<IProduct[]>([]);
   const [filterCriteria, setFilterCriteria] = useState<FilterCriteria>({});
   const [productTypes, setProductTypes] = useState<string[]>([]);
+  const [priceRangeLimits, setPriceRangeLimits] = useState<{
+    min: number;
+    max: number;
+  }>({ min: 0, max: 0 });
   const [selectedProductTypes, setSelectedProductTypes] = useState<string[]>(
     []
   );
 
   useEffect(() => {
-    const types = new Set(data?.map((product) => product.product_type));
-    setProductTypes([...types]);
+    if (data) {
+      const prices = data.flatMap((product) =>
+        product.variants.map((variant) => parseFloat(variant.price))
+      );
+      const minPrice = Math.min(...prices);
+      const maxPrice = Math.max(...prices);
+      setPriceRangeLimits({ min: minPrice, max: maxPrice });
+
+      const types = new Set(data?.map((product) => product.product_type));
+      setProductTypes([...types]);
+    }
   }, [data]);
 
   useEffect(() => {
@@ -104,6 +118,7 @@ export const ProductsProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         products: filteredProducts,
         productTypes,
+        priceRangeLimits,
         isLoading,
         error,
         setFilterCriteria,

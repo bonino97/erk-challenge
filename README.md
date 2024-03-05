@@ -28,7 +28,7 @@ This project makes use of the following libraries:
 
 ## Live Demo
 
-Check out the live demo [here](https://xchallenge.netlify.app/).
+Check out the live demo [here](https://erk-challenge.netlify.app/).
 
 ## Documentation
 
@@ -41,4 +41,3 @@ Check out the live demo [here](https://xchallenge.netlify.app/).
 - Handle errors gracefully and inform the user accordingly.
 - Add tests to ensure reliability and prevent regressions.
 - Further decouple components for better maintainability and reusability.
-- Improve carousel fetching events.

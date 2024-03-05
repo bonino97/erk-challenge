@@ -3,15 +3,22 @@ import Slider from 'react-input-slider';
 
 interface RangeSliderProps {
   x: number;
+  xmin: number;
+  xmax: number;
   onChange: ({ x }: { x: number }) => void;
 }
 
-const RangeSlider: React.FC<RangeSliderProps> = ({ x, onChange }) => (
+const RangeSlider: React.FC<RangeSliderProps> = ({
+  x,
+  xmin,
+  xmax,
+  onChange,
+}) => (
   <Slider
     axis='x'
     xstep={1}
-    xmin={0}
-    xmax={100}
+    xmin={xmin}
+    xmax={xmax}
     x={x}
     onChange={onChange}
     styles={{
