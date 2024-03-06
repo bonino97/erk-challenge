@@ -47,6 +47,8 @@ Check out the live demo [here](https://erk-challenge.netlify.app/), deployed at 
 
 ## ToDo
 
+- Improves UX/UI to be more professional
+- Improve responsive design
 - Implement loading states across the application.
 - Handle errors gracefully and inform the user accordingly.
 - Add tests to ensure reliability and prevent regressions.
