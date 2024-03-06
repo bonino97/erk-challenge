@@ -1,7 +1,6 @@
 import React from 'react';
-import SidebarContent from '@/components/Shared/Filters/Sidebar/SidebarContent';
-import SidebarToggle from '@/components/Shared/Filters/Sidebar/SidebarToggle';
 import { useLayout } from '@/providers/LayoutContext';
+import { SidebarContent, SidebarToggle } from '@/components';
 
 const Sidebar: React.FC = () => {
   const { sidebarOpen, setSidebarOpen } = useLayout();

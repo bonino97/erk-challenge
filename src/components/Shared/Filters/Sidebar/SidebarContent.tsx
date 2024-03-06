@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import Checkbox from '@/components/Shared/Checkbox/Checkbox';
-import RangeSlider from '@/components/Shared/RangeSlider/RangeSlider';
 import { useProducts } from '@/providers/ProductsContext';
+import { Checkbox, RangeSlider } from '@/components';
 
 const SidebarContent: React.FC = () => {
   const {
