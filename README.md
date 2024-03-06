@@ -38,12 +38,12 @@ Check out the live demo [here](https://erk-challenge.netlify.app/), deployed at 
 
 ## Features Developed
 
-[x] - List products showing Image, Title and Product Type. Required.
-[x] - Display amount of results retrieved. Required.
-[x] - Select products view between grid and list for the main display area. Required.
-[x] - Filter products by Product Type. Required.
-[x] - Filter products by Price Range. Optional.
-[x] - Sort results: A-Z, Price: High to Low, Price: Low to High. Optional.
+- [x] List products showing Image, Title and Product Type. Required.
+- [x] Display amount of results retrieved. Required.
+- [x] Select products view between grid and list for the main display area. Required.
+- [x] Filter products by Product Type. Required.
+- [x] Filter products by Price Range. Optional.
+- [x] Sort results: A-Z, Price: High to Low, Price: Low to High. Optional.
 
 ## ToDo
 
